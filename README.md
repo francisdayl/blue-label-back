@@ -1,5 +1,28 @@
-Este es el backend.
+## How to run
 
-Recuerda instalar flask, flask_cors y cualquier otra dependencia necesaria de ser el caso.
+### *Online: 
+https://mmgkxuq3hr.us-east-1.awsapprunner.com/ 
 
-Ejecuta el comando: python main.py para levantar el proyecto
+*The url can be out for service due to billing
+
+### Locally
+0. Make sure you have python 3.11
+1. Create a virtual environment
+2. Activate the virtual environment
+3. Install the dependencies
+```
+pip install -r requirements.txt
+```
+4. Create the .env file with the definition of the template
+6. Run
+```
+python run.py
+```
+### Docker
+Build the docker image
+```
+docker build -t blue-label-back .
+```
+Run the container in detached mode, mapping port 5000
+```
+docker run -d -p 5000:5000 --name blue-label-back blue-label-back
