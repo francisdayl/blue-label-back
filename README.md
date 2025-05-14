@@ -18,6 +18,11 @@ pip install -r requirements.txt
 ```
 python run.py
 ```
+7. Visit and interact with the api in:
+```
+http://127.0.0.1:5000/api/docs
+
+```
 ### Docker
 Build the docker image
 ```
