@@ -1,0 +1,111 @@
+openapi: 3.0.4
+info:
+  title: API
+  description: |-
+    API UI document with all the api endpoints definitions.
+  version: 1.0.12
+externalDocs:
+  description: Proyect Repository
+  url: https://swagger.io
+servers:
+  - url: http://localhost:5000
+tags:
+  - name: api
+    description: General requests to the api
+
+paths:
+## API ENDPOINTS
+  /api/:
+    get:
+      tags:
+        - api
+      summary: Health check.
+      description: Check the health of the server.
+      operationId: health_check
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'ok'
+        '500':
+          description: Internal server Error
+
+  /api/get-options:
+    get:
+      tags:
+        - api
+      summary: Get a list of options.
+      description: Retrieves a string list with all options.
+      operationId: get_options
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  example: 'option1'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /api/save:
+    post:
+      tags:
+        - api
+      summary: Saves the user option.
+      description: Saves the user option in the database.
+      operationId: save
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: 'name'
+                email:
+                  type: string
+                  example: 'mail@mail.com'
+                option:
+                  type: string
+                  example: 'option1'
+      responses:
+        '201':
+          description: successful operation
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal server Error
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+  
