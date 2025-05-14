@@ -9,6 +9,7 @@ externalDocs:
   url: https://swagger.io
 servers:
   - url: http://localhost:5000
+  - url: https://qcjjf9vpqn.us-east-1.awsapprunner.com
 tags:
   - name: api
     description: General requests to the api
