@@ -1,4 +1,3 @@
-import pymysql
 from flask import Flask
 from flask_swagger_ui import get_swaggerui_blueprint
 from flask_marshmallow import Marshmallow
@@ -28,7 +27,7 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 )
 
 
-def create_app(testing=False):
+def create_app():
     app = Flask(__name__)
     app.config["SQLALCHEMY_DATABASE_URI"] = userpass + server + "/" + dbname
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True

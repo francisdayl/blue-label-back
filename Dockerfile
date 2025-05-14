@@ -1,5 +1,7 @@
 FROM --platform=linux/amd64 python:3.11-buster as build
 
+# FROM python:3.11-buster
+
 
 WORKDIR /app
 
@@ -18,4 +20,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python run.py"]
+CMD ["python", "run.py"]
